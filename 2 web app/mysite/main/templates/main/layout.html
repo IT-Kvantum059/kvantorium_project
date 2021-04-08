@@ -1,0 +1,33 @@
+{% load static %}
+
+<!doctype HTML>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+</head>
+<body>
+    <aside>
+        <img src="{% static 'main/img/logo_simple.svg' %}" alt="">
+        <span class="logo">itProger</span>
+        <h3>Navigation</h3>
+        <ul>
+            <a href="{% url 'home' %}"><li><i class="fas fa-home"></i> Home</li></a>
+            <a href="{% url 'about' %}"><li><i class="fas fa-address-card"></i> About us</li></a>
+            <a href="{% url 'news_home' %}"><li><i class="fas fa-newspaper"></i>News</li></a>
+            <a href=""><li><i class="fas fa-paper-plane"></i> Contacts</li></a>
+            <a href="{% url 'create' %}"><li><button class="btn btn-info"><i class="fas fa-plus-circle"></i> Add post</button></li></a>
+        </ul>
+    </aside>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>
+
