@@ -19,6 +19,8 @@ Servo myservo2; // назначаем вывод 2 сервы
 
 char incomingByte = 0;
 int pos = 0;
+char comand[3];
+char *p;
 
 int state = INIT;
 void setup()
@@ -31,11 +33,6 @@ void setup()
 }
 
 void loop() {
-  // if (Serial.available() > 0) { //если есть доступные данные
-  //   // считываем байт
-  //   incomingByte = Serial.read();
-
-  // }
   switch (state) {
     case INIT:
       myservo1.attach(SERVO_1_PIN);
@@ -45,8 +42,15 @@ void loop() {
       state = IDLE;
       break;
     case IDLE:
+      if (Serial.available() > 0) { //если есть доступные данные - считываем байт
+        comand[0] = Serial.read();
+        comand[1] = Serial.read();
+        state = EXEC;
+        *p = comand;
+      }
       break;
     case EXEC:
+      Serial.println(p);
       break;
     default:
       break;
