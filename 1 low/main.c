@@ -19,7 +19,8 @@ Servo myservo2; // назначаем вывод 2 сервы
 
 char incomingByte = 0;
 int pos = 0;
-char comand[3];
+char comand[100];
+char buf[100];
 char *p;
 
 int state = INIT;
@@ -43,14 +44,30 @@ void loop() {
       break;
     case IDLE:
       if (Serial.available() > 0) { //если есть доступные данные - считываем байт
-        comand[0] = Serial.read();
-        comand[1] = Serial.read();
+//        comand[0] = Serial.parseInt(SKIP_WHITESPACE);
+//        comand[1] = Serial.parseInt(SKIP_WHITESPACE);
+//        comand[2] = Serial.parseInt(SKIP_WHITESPACE);
+        memset(buf, '\0', 100);
+        int i = 0;
+        while(Serial.available() > 0) {
+          buf[i] = Serial.read();
+          
+          if (buf[i] == '\n') {
+//            strcpy(buf, comand);
+            Serial.print(buf);
+            Serial.println('1');
+            i = 0;
+            break;
+          }
+          i++;
+        }
         state = EXEC;
-        *p = comand;
+        p = comand;
       }
       break;
     case EXEC:
-      Serial.println(p);
+//      Serial.println(p);
+      state = IDLE;
       break;
     default:
       break;
