@@ -19,58 +19,46 @@ Servo myservo2; // назначаем вывод 2 сервы
 
 char incomingByte = 0;
 int pos = 0;
-char comand[100];
-char buf[100];
+
+
 char *p;
+int newpos = 0;
+int servonumber = 0;
 
 int state = INIT;
 void setup()
-{
-
-  // устанавливаем пин как вывод управления сервой
-
-  //инициализация последовательного порта:
-  Serial.begin(9600);
-}
+  {
+      Serial.begin(9600); //инициализация последовательного порта
+  }
 
 void loop() {
   switch (state) {
-    case INIT:
-      myservo1.attach(SERVO_1_PIN);
-      myservo2.attach(SERVO_2_PIN);
-      myservo1.write(INIT_POS);
-      myservo2.write(INIT_POS);
-      state = IDLE;
-      break;
-    case IDLE:
-      if (Serial.available() > 0) { //если есть доступные данные - считываем байт
-//        comand[0] = Serial.parseInt(SKIP_WHITESPACE);
-//        comand[1] = Serial.parseInt(SKIP_WHITESPACE);
-//        comand[2] = Serial.parseInt(SKIP_WHITESPACE);
-        memset(buf, '\0', 100);
-        int i = 0;
-        while(Serial.available() > 0) {
-          buf[i] = Serial.read();
-          
-          if (buf[i] == '\n') {
-//            strcpy(buf, comand);
-            Serial.print(buf);
-            Serial.println('1');
-            i = 0;
-            break;
-          }
-          i++;
+     case INIT:
+        myservo1.attach(SERVO_1_PIN);
+        myservo2.attach(SERVO_2_PIN);
+        myservo1.write(INIT_POS);
+        myservo2.write(INIT_POS);
+        Serial.println("Enter rotation angle");
+        state = IDLE;
+        break;
+     case IDLE:
+        if (Serial.available() > 0) { //если есть доступные данные - считываем байт
+            newpos = Serial.parseInt();
+            state = EXEC;
+         }
+        break;
+     case EXEC:
+        if (newpos < 2000) {
+             myservo1.write(newpos - 1000); //поворот первой сервы на заданный угол
+             state = IDLE;
         }
-        state = EXEC;
-        p = comand;
-      }
-      break;
-    case EXEC:
-//      Serial.println(p);
-      state = IDLE;
-      break;
-    default:
-      break;
-  }
+        else {
+             myservo2.write(newpos - 2000); //поворот второй сервы на заданный угол
+             state = IDLE;
+        }
+        break;
+        default:
+         break;
+}
 
 }
