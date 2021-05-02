@@ -17,13 +17,8 @@ Servo myservo1; // назначаем вывод 1 сервы
 Servo myservo2; // назначаем вывод 2 сервы
 
 
-char incomingByte = 0;
-int pos = 0;
-
-
-char *p;
 int newpos = 0;
-int servonumber = 0;
+
 
 int state = INIT;
 void setup()
