@@ -33,7 +33,8 @@ try:
         servo1.ChangeDutyCycle(2+(angle/18))
         time.sleep(0.5)
         servo1.ChangeDutyCycle(0)
-        break
+
+        num_servo = int(input('Pls write num of servo which u want move: '))
 
 
     elif num_servo == 2:
@@ -42,7 +43,8 @@ try:
             servo2.ChangeDutyCycle(2+(angle/18))
             time.sleep(0.5)
             servo2.ChangeDutyCycle(0)
-        break
+        
+            num_servo = int(input('Pls write num of servo which u want move: '))
 
 
     elif num_servo == 3:
@@ -51,7 +53,8 @@ try:
             servo3.ChangeDutyCycle(2+(angle/18))
             time.sleep(0.5)
             servo3.ChangeDutyCycle(0)
-        break
+        
+            num_servo = int(input('Pls write num of servo which u want move: '))
 
 
 
