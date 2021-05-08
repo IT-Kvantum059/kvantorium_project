@@ -28,13 +28,12 @@ try:
     num_servo = int(input('Pls write num of servo which u want move: '))
 
     if num_servo == 1:
-        while True:
         #Ask user for angle and turn servo to it
-            angle = float(input('Enter for servo1 angle between 0 & 180: '))
-            servo1.ChangeDutyCycle(2+(angle/18))
-            time.sleep(0.5)
-            servo1.ChangeDutyCycle(0)
-        break
+        angle = float(input('Enter for servo1 angle between 0 & 180: '))
+        servo1.ChangeDutyCycle(2+(angle/18))
+        time.sleep(0.5)
+        servo1.ChangeDutyCycle(0)
+    break
 
 
     elif num_servo == 2:
@@ -54,7 +53,7 @@ try:
             servo3.ChangeDutyCycle(0)
         break
 
-    
+
 
 finally:
     #Clean things up at the end
