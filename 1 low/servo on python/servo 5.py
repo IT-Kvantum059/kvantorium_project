@@ -30,10 +30,10 @@ try:
     if num_servo == 1:
         while True:
         #Ask user for angle and turn servo to it
-        angle = float(input('Enter for servo1 angle between 0 & 180: '))
-        servo1.ChangeDutyCycle(2+(angle/18))
-        time.sleep(0.5)
-        servo1.ChangeDutyCycle(0)
+            angle = float(input('Enter for servo1 angle between 0 & 180: '))
+            servo1.ChangeDutyCycle(2+(angle/18))
+            time.sleep(0.5)
+            servo1.ChangeDutyCycle(0)
     elif num_servo == 2:
         while True:
             angle = float(input('Enter for servo2 angle between 0 & 180: '))
