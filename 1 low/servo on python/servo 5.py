@@ -33,7 +33,7 @@ try:
         servo1.ChangeDutyCycle(2+(angle/18))
         time.sleep(0.5)
         servo1.ChangeDutyCycle(0)
-    break
+        break
 
 
     elif num_servo == 2:
