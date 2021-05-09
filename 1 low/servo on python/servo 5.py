@@ -36,19 +36,17 @@ try:
 
 
         elif num_servo == 2:
-            while True:
-                angle = float(input('Enter for servo2 angle between 0 & 180: '))
-                servo2.ChangeDutyCycle(2+(angle/18))
-                time.sleep(0.5)
-                servo2.ChangeDutyCycle(0)
+            angle = float(input('Enter for servo2 angle between 0 & 180: '))
+            servo2.ChangeDutyCycle(2+(angle/18))
+            time.sleep(0.5)
+            servo2.ChangeDutyCycle(0)
 
 
         elif num_servo == 3:
-            while True:
-                angle = float(input('Enter for servo3 angle between 0 & 180: '))
-                servo3.ChangeDutyCycle(2+(angle/18))
-                time.sleep(0.5)
-                servo3.ChangeDutyCycle(0)
+            angle = float(input('Enter for servo3 angle between 0 & 180: '))
+            servo3.ChangeDutyCycle(2+(angle/18))
+            time.sleep(0.5)
+            servo3.ChangeDutyCycle(0)
 
 
 
