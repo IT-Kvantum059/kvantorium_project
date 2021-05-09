@@ -24,37 +24,31 @@ servo2.start(0)
 servo3.start(0)
 
 try:
-
-    num_servo = int(input('Pls write num of servo which u want move: '))
-
-    if num_servo == 1:
-        #Ask user for angle and turn servo to it
-        angle = float(input('Enter for servo1 angle between 0 & 180: '))
-        servo1.ChangeDutyCycle(2+(angle/18))
-        time.sleep(0.5)
-        servo1.ChangeDutyCycle(0)
-
+    while True:
         num_servo = int(input('Pls write num of servo which u want move: '))
 
-
-    elif num_servo == 2:
-        while True:
-            angle = float(input('Enter for servo2 angle between 0 & 180: '))
-            servo2.ChangeDutyCycle(2+(angle/18))
+        if num_servo == 1:
+            #Ask user for angle and turn servo to it
+            angle = float(input('Enter for servo1 angle between 0 & 180: '))
+            servo1.ChangeDutyCycle(2+(angle/18))
             time.sleep(0.5)
-            servo2.ChangeDutyCycle(0)
-        
-            num_servo = int(input('Pls write num of servo which u want move: '))
+            servo1.ChangeDutyCycle(0)
 
 
-    elif num_servo == 3:
-        while True:
-            angle = float(input('Enter for servo3 angle between 0 & 180: '))
-            servo3.ChangeDutyCycle(2+(angle/18))
-            time.sleep(0.5)
-            servo3.ChangeDutyCycle(0)
-        
-            num_servo = int(input('Pls write num of servo which u want move: '))
+        elif num_servo == 2:
+            while True:
+                angle = float(input('Enter for servo2 angle between 0 & 180: '))
+                servo2.ChangeDutyCycle(2+(angle/18))
+                time.sleep(0.5)
+                servo2.ChangeDutyCycle(0)
+
+
+        elif num_servo == 3:
+            while True:
+                angle = float(input('Enter for servo3 angle between 0 & 180: '))
+                servo3.ChangeDutyCycle(2+(angle/18))
+                time.sleep(0.5)
+                servo3.ChangeDutyCycle(0)
 
 
 
