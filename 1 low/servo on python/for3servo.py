@@ -55,6 +55,9 @@ try:
             time.sleep(0.5)
             servo3.ChangeDutyCycle(0)
 
+        else:
+            print("I don't understand u")
+
 
 
 finally:
