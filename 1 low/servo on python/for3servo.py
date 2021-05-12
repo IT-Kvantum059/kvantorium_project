@@ -9,15 +9,15 @@ GPIO.setmode(GPIO.BOARD)
 
 # Set pin as an output, and define as servo as PWM pin
 # Servo 1
-GPIO.setup(8,GPIO.OUT)
+GPIO.setup(11,GPIO.OUT)
 servo1 = GPIO.PWM(11,50)
 
 # Servo 2
-GPIO.setup(10,GPIO.OUT)
+GPIO.setup(13,GPIO.OUT)
 servo2 = GPIO.PWM(13,50)
 
 # Servo 3
-GPIO.setup(12,GPIO.OUT)
+GPIO.setup(15,GPIO.OUT)
 servo3 = GPIO.PWM(15,50)
 
 
