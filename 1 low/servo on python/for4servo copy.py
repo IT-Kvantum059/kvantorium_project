@@ -32,7 +32,6 @@ servo3.start(0)
 servo4.start(0)
 
 
-# Start app
 try:
     while True:
         num_servo = int(input('Pls write num of servo which u want move: '))
@@ -70,7 +69,25 @@ try:
         else:
             print("I don't understand u")
 
-if state == 
+INIT = 0
+IDLE = 1
+EXEC = 2
+
+state = INIT
+
+if state is INIT:
+    # initialize
+    state = IDLE
+
+if state is IDLE:
+    # write to servo by num
+    state = EXEC
+
+if state is EXEC:
+    # initialize
+    state = INIT
+
+
 
 finally:
     #Clean things up at the end
