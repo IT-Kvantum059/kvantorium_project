@@ -11,26 +11,26 @@ state = INIT
 
 while True:
     if state is INIT:
-        # Set GPIO numbering mode
+
+        servo1 = 8
+        servo2 = 10
+        servo3 = 12
+
         GPIO.setmode(GPIO.BOARD)
 
-        # Set pin as an output, and define as servo as PWM pin
-        # Servo 1
-        GPIO.setup(8,GPIO.OUT)
-        servo1 = GPIO.PWM(8,50)
+        GPIO.setup(servo1,GPIO.OUT)
+        GPIO.setup(servo2,GPIO.OUT)
+        GPIO.setup(servo3,GPIO.OUT)
 
-        # Servo 2
-        GPIO.setup(10,GPIO.OUT)
-        servo2 = GPIO.PWM(10,50)
+        
+        s1 = GPIO.PWM(servo1,50)
+        s2 = GPIO.PWM(servo2,50)
+        s3 = GPIO.PWM(servo3,50)
 
-        # Servo 3
-        GPIO.setup(12,GPIO.OUT)
-        servo3 = GPIO.PWM(12,50)
 
-        # Start PWM running, with value of 0 (pulse off)
-        servo1.start(0)
-        servo2.start(0)
-        servo3.start(0)
+        s1.start(0)
+        s2.start(0)
+        s3.start(0)
 
         num_servo = int(input('Введите номер сервопривода от 1 до 3: '))
 
@@ -39,21 +39,21 @@ while True:
     if state is IDLE:
         if num_servo == 1:
             angle = float(input('Введите число от 0 до 180 для servo1: '))
-            servo1.ChangeDutyCycle(2+(angle/18))
+            s1.ChangeDutyCycle(2+(angle/18))
             time.sleep(0.5)
-            servo1.ChangeDutyCycle(0)
+            s1.ChangeDutyCycle(0)
 
         elif num_servo == 2:
             angle = float(input('Введите число от 0 до 180 для servo2: '))
-            servo2.ChangeDutyCycle(2+(angle/18))
+            s2.ChangeDutyCycle(2+(angle/18))
             time.sleep(0.5)
-            servo2.ChangeDutyCycle(0)
+            s2.ChangeDutyCycle(0)
 
         elif num_servo == 3:
             angle = float(input('Введите число от 0 до 180 для servo3: '))
-            servo3.ChangeDutyCycle(2+(angle/18))
+            s3.ChangeDutyCycle(2+(angle/18))
             time.sleep(0.5)
-            servo3.ChangeDutyCycle(0)
+            s3.ChangeDutyCycle(0)
 
         else:
             print("Я не понимаю вас")
@@ -68,8 +68,7 @@ while True:
 
 # finally:
 #     #Clean things up at the end
-#     servo1.stop()
-#     servo2.stop()
-#     servo3.stop()
+#     s1.stop()
+#     s2.stop()
+#     s3.stop()
 #     GPIO.cleanup()
-#     print("Servo Stop")
